@@ -1,0 +1,24 @@
+public class EvenLengthWords {
+    public static void main(String[] args) {
+        String input = "sjvdsh sbjf@bfb sbjfbjsf9"; 
+        
+       
+        String[] words = input.split("\\s+");
+
+        
+        for (String word : words) {
+        int length = word.length();
+      
+ System.out.print(length+" ");
+        }
+        System.out.println();
+        for (String word : words) {
+           int length1 = word.length();
+          if (length1 % 2 == 0) {
+                System.out.print(word +  " " );
+            } 
+            
+        }
+       
+    }
+}
