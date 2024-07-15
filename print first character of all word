@@ -1,0 +1,24 @@
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+     Scanner s=new Scanner(System.in);
+     String a=s.nextLine();
+     int count=0;
+   
+     
+     for(int i=0;i<a.length()-1;i++)
+     {
+        char c=a.charAt(i);
+        if(i<=0)
+        {
+            System.out.println(a.charAt(0));
+        }
+         
+      if( c==' ')
+      {
+          System.out.println(a.charAt(i+1));
+      }
+      
+     }
+    }
+}
