@@ -1,0 +1,55 @@
+public class StringPermutations {
+
+    public static void main(String[] args) {
+        String input = "abc";
+        char[] currentPerm = input.toCharArray();
+        int n = currentPerm.length;
+        
+        
+        System.out.println(new String(currentPerm));
+
+        boolean hasNext = true;
+
+        while (hasNext) {
+            int largestI = -1;
+       
+            for (int i = 0; i < n - 1; i++) {
+                if (currentPerm[i] < currentPerm[i + 1]) {
+                    largestI = i;
+                }
+            }
+
+            if (largestI == -1) {
+               
+                hasNext = false;
+            } else {
+                
+                int largestJ = -1;
+                for (int j = 0; j < n; j++) {
+                    if (currentPerm[largestI] < currentPerm[j]) {
+                        largestJ = j;
+                    }
+                }
+
+                
+                char temp = currentPerm[largestI];
+                currentPerm[largestI] = currentPerm[largestJ];
+                currentPerm[largestJ] = temp;
+
+              
+                int start = largestI + 1;
+                int end = n - 1;
+                while (start < end) {
+                    temp = currentPerm[start];
+                    currentPerm[start] = currentPerm[end];
+                    currentPerm[end] = temp;
+                    start++;
+                    end--;
+                }
+
+             
+                System.out.println(new String(currentPerm));
+            }
+        }
+    }
+}
