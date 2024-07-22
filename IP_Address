@@ -1,0 +1,46 @@
+import java.util.*;
+
+public class IPAddressClassification {
+    public static void main(String args[]) {
+        Scanner a = new Scanner(System.in);
+        String ip = a.nextLine();
+        int count = 0;
+        boolean valid = true;
+        String[] ip2 = ip.split("\\.");
+
+        int Length = ip2.length;
+
+        if (Length == 4 && ip.chars().filter(ch -> ch == '.').count() == 3) {
+            for (int j = 0; j < ip2.length; j++) {
+                try {
+                    int octet = Integer.parseInt(ip2[j]);
+                    if (octet < 0 || octet > 255) {
+                        valid = false;
+                        break;
+                    }
+                } catch (NumberFormatException e) {
+                    valid = false;
+                    break;
+                }
+            }
+            if (valid) {
+                int ip1 = Integer.parseInt(ip2[0]);
+                if (ip1 >= 1 && ip1 <= 126) {
+                    System.out.println("It belongs to class A");
+                } else if (ip1 >= 128 && ip1 <= 191) {
+                    System.out.println("It belongs to class B");
+                } else if (ip1 >= 192 && ip1 <= 223) {
+                    System.out.println("It belongs to class C");
+                } else if (ip1 >= 224 && ip1 <= 239) {
+                    System.out.println("It belongs to class D");
+                } else if (ip1 >= 240 && ip1 <= 255) {
+                    System.out.println("It belongs to class E");
+                }
+            } else {
+                System.out.println("Enter a valid IP Address");
+            }
+        } else {
+            System.out.println("Enter a valid IP Address");
+        }
+    }
+}
